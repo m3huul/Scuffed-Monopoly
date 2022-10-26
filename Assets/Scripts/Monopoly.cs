@@ -46,53 +46,53 @@ public class Monopoly : MonoBehaviour
         GameMode.instance.playerIndex++;
         nextTurn();
     }
-    public void OnClickPurchase()
-    {
-        for(int i = 0; i < 22; i++)
-        {
-            if (propertyCards[i].activeInHierarchy)
-            {
-                pay= propertyCards[i].GetComponent<CardDisplay>().card.purchasePrice;
-                break;
-            }
-        }
-    }
-    public void OnClickMortgage()
-    {
-        for (int i = 0; i < 22; i++)
-        {
-            if (propertyCards[i].activeInHierarchy)
-            {
-                pay = propertyCards[i].GetComponent<CardDisplay>().card.mortgageValue;
-                break;
-            }
-        }
-    }
+    //public void OnClickPurchase()
+    //{
+    //    for(int i = 0; i < 22; i++)
+    //    {
+    //        if (propertyCards[i].activeInHierarchy)
+    //        {
+    //            pay= propertyCards[i].GetComponent<CardDisplay>().card.purchasePrice;
+    //            break;
+    //        }
+    //    }
+    //}
+    //public void OnClickMortgage()
+    //{
+    //    for (int i = 0; i < 22; i++)
+    //    {
+    //        if (propertyCards[i].activeInHierarchy)
+    //        {
+    //            pay = propertyCards[i].GetComponent<CardDisplay>().card.mortgageValue;
+    //            break;
+    //        }
+    //    }
+    //}
 
-    public void OnClickBuy()
-    {
-        for(int i = 0; i < 22; i++)
-        {
-            if (pay != 0)
-            {
-                if (propertyCards[i].activeInHierarchy)
-                {
-                    GameMode.instance.playerMoney[GameMode.instance.playerIndex] -= pay;
-                    GameMode.instance.players[GameMode.instance.playerIndex].GetComponent<PlayerMovement>().inventory.Tiles.Add(new KeyValuePair<int, string>(propertyCards[i].GetComponent<CardDisplay>().cardNo, propertyCards[i].GetComponent<CardDisplay>().cardType));
-                    Debug.Log(GameMode.instance.players[GameMode.instance.playerIndex].GetComponent<PlayerMovement>().inventory.Tiles[0]);
-                    //propertyCards[i].GetComponent<CardDisplay>().card.propertyOwnedBy = GameMode.instance.playerIndex + 1;
-                    propertyCards[i].SetActive(false);
-                    GameMode.instance.playerIndex++;
-                    nextTurn();
-                    break;
-                }
-            }
-            else
-            {
-                Debug.Log("select purchase or mortgage");
-            }
-        }
-    }
+    //public void OnClickBuy()
+    //{
+    //    for(int i = 0; i < 22; i++)
+    //    {
+    //        if (pay != 0)
+    //        {
+    //            if (propertyCards[i].activeInHierarchy)
+    //            {
+    //                GameMode.instance.playerMoney[GameMode.instance.playerIndex] -= pay;
+    //                GameMode.instance.players[GameMode.instance.playerIndex].GetComponent<PlayerMovement>().inventory.Tiles.Add(new KeyValuePair<int, string>(propertyCards[i].GetComponent<CardDisplay>().cardNo, propertyCards[i].GetComponent<CardDisplay>().cardType));
+    //                Debug.Log(GameMode.instance.players[GameMode.instance.playerIndex].GetComponent<PlayerMovement>().inventory.Tiles[0]);
+    //                //propertyCards[i].GetComponent<CardDisplay>().card.propertyOwnedBy = GameMode.instance.playerIndex + 1;
+    //                propertyCards[i].SetActive(false);
+    //                GameMode.instance.playerIndex++;
+    //                nextTurn();
+    //                break;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("select purchase or mortgage");
+    //        }
+    //    }
+    //}
 
     //Testing funtion
     public void OnClickAuction()
@@ -116,19 +116,19 @@ public class Monopoly : MonoBehaviour
     
 
     //Tax card Function --- Player is Taxed
-    public void OnClickPay()
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            if (taxCards[i].activeInHierarchy)
-            {
-                GameMode.instance.playerMoney[GameMode.instance.playerIndex] -= taxCards[i].GetComponent<CardDisplay>().card.payAmount;
-                taxCards[i].SetActive(false);
-                nextTurn();
-                break;
-            } 
-        }
-    }
+    //public void OnClickPay()
+    //{
+    //    for (int i = 0; i < 4; i++)
+    //    {
+    //        if (taxCards[i].activeInHierarchy)
+    //        {
+    //            GameMode.instance.playerMoney[GameMode.instance.playerIndex] -= taxCards[i].GetComponent<CardDisplay>().card.payAmount;
+    //            taxCards[i].SetActive(false);
+    //            nextTurn();
+    //            break;
+    //        } 
+    //    }
+    //}
 
     public void Roll()
     {
@@ -151,7 +151,7 @@ public class Monopoly : MonoBehaviour
         Debug.Log(RollNo1 + " " + RollNo2);
         total = RollNo1 + RollNo2;
         
-        GameMode.instance.MovePlayer(1);
+        GameMode.instance.MovePlayer(total);
     }
 
 

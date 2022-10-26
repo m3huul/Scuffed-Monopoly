@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class plat : MonoBehaviour
 {
-    public string name;
+    public string Name;
     public string price;
     public string rent;
     public string house1;
@@ -14,7 +14,4 @@ public class plat : MonoBehaviour
     public string price_per_house;
     public string hotel;
     public string mortgage;
-
-
-
 }
