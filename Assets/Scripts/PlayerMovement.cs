@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float duration;
 
+    public int activeWaypoint, lastWaypoint;
     public float Value = 0, angle = 90;
     int count = 0;   //10 steps count
     float journey = 0f;
@@ -53,11 +55,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartMove(int i)
     {
-        StartCoroutine(Move(i));
+        Calc(i);
     }
 
+    public void Calc(int i)
+    {
+        lastWaypoint = activeWaypoint;
+        activeWaypoint = lastWaypoint + i;
+        Platforms.instance.stateCheck(activeWaypoint);
+        StartCoroutine(Move(i));
+
+    }
+    //Run another func to return acive waypoints gameobject
     public IEnumerator Move(int finalDestination)
     {
+        
         PlayMovementAnim = GetComponentInChildren<Animator>();
         while (finalDestination>0)
         {
@@ -69,18 +81,11 @@ public class PlayerMovement : MonoBehaviour
             journey = 0;
 
             finalDestination--;
-            count++;
-            if(count == 10)
-            {
-                Turn = true;
-                yield return new WaitForSeconds(1.8f);
-                count = 0;
-                angle += 90;
-            }
+            
         }
         Monopoly.instance.coroutineAllowed = true;
-        OnReachingDestination();
-        
+        //OnReachingDestination();
+        //Platforms.instance.ShowCard();
     }
 
     public IEnumerator Lerping(int i)
@@ -106,16 +111,19 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit Hit;
         if(Physics.Raycast(transform.position, -transform.up, out Hit))
         {
-            for(int i = 0; i < 2; i++)
-            {
-                if (GameMode.instance.players[i].GetComponent<PlayerMovement>().inventory.Tiles.Contains(new KeyValuePair<int, string>(Hit.collider.GetComponent<Platform>().cardNo, Hit.collider.GetComponent<Platform>().state.ToString())))
-                {
-                    Debug.Log("a player alerady has this card");
-                    break;
-                }
-            }
-            Hit.collider.GetComponent<Platform>().PlatformState();
+            Platforms.instance.ShowCard(Hit.transform.GetComponent<Platform>().state, Hit.transform.GetComponent<Platform>().PropertyDetails);
+
         }
     }
 
 }
+
+            //for(int i = 0; i < 2; i++)
+            //{
+            //    //if (GameMode.instance.players[i].GetComponent<PlayerMovement>().inventory.Tiles.Contains(new KeyValuePair<int, string>(Hit.collider.GetComponent<Platform>().cardNo, Hit.collider.GetComponent<Platform>().state.ToString())))
+            //    //{
+            //    //    Debug.Log("a player alerady has this card");
+            //    //    break;
+            //    //}
+            //}
+            //Hit.collider.GetComponent<Platform>().ShowCard();

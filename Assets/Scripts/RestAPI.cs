@@ -10,7 +10,7 @@ using static System.Net.WebRequestMethods;
 public class RestAPI : MonoBehaviour
 {
     public List<GameObject> allPlatforms;
-    List<PropertyInfo> list = new List<PropertyInfo>();
+    //List<PropertyInfo> list = new List<PropertyInfo>();
 
     private void Start()
     {
@@ -27,42 +27,32 @@ public class RestAPI : MonoBehaviour
         }
         else
         {
-            List<PropertyInfo> units = new List<PropertyInfo>();
+            //List<PropertyInfo> units = new List<PropertyInfo>();
             string EncryptedString = request.downloadHandler.text;
             Debug.Log("Json data" + EncryptedString);
             JSONNode jSONNode = JSON.Parse(EncryptedString);
 
 
-            int totP = allPlatforms.Count;
+            int fieldsCount = jSONNode["data"][0].Count;
             int totalProperties = jSONNode["data"].Count;
             //FindLengthOfUnitstoShow();
-            foreach(GameObject ob in allPlatforms)
-            {
-                plat n= ob.GetComponent<plat>();
-                for (int i = 0; i < 10; i++)
-                {
-                    n.name = jSONNode["data"][i]["property_name"];
-                    n.price = jSONNode["data"][i]["price"];
-                    n.rent = jSONNode["data"][i]["rent"];
-                    n.house1 = jSONNode["data"][i]["house1"];
-                    n.house2 = jSONNode["data"][i]["house2"];
-                    n.house3 = jSONNode["data"][i]["house3"];
-                    n.house4 = jSONNode["data"][i]["house4"];
-                    n.price_per_house = jSONNode["data"][i]["price_per_house"];
-                    n.hotel = jSONNode["data"][i]["hotel"];
-                    n.mortgage = jSONNode["data"][i]["mortgage"];
 
-                }
+            for (int i = 0; i < allPlatforms.Count; i++)
+            {
+                plat n = allPlatforms[i].GetComponent<plat>();
+                n.Name = jSONNode["data"][i]["property_name"];
+                n.price = jSONNode["data"][i]["price"];
+                n.rent = jSONNode["data"][i]["rent"];
+                n.house1 = jSONNode["data"][i]["house1"];
+                n.house2 = jSONNode["data"][i]["house2"];
+                n.house3 = jSONNode["data"][i]["house3"];
+                n.house4 = jSONNode["data"][i]["house4"];
+                n.price_per_house = jSONNode["data"][i]["price_per_house"];
+                n.hotel = jSONNode["data"][i]["hotel"];
+                n.mortgage = jSONNode["data"][i]["mortgage"];
 
             }
-            if (units == null)
-            {
-                print("units is null");
-
-            }
-            
         }
-        
     }
 }
 

@@ -16,21 +16,11 @@ public class GameMode : MonoBehaviour
 
     public enum PlatformState
     {
-        StartPoint,
-        PurpleProperty,
-        LightBlueProperty,
-        DarkBlueProperty,
-        PinkProperty,
-        OrangeProperty,
-        RedProperty,
-        YellowProperty,
-        GreenProperty,
+        Corners,
+        Property,
         Chance,
         CommunityChest,
         Pay,
-        FreeParking,
-        Jail,
-        GoToJail,
         RailRoad,
     }
     
@@ -67,69 +57,69 @@ public class GameMode : MonoBehaviour
 
 
 
-    public void WhatToDo(PlatformState state, int cardNo)
-    {
-        switch (state)
-        {
-            case GameMode.PlatformState.PurpleProperty:
-                mon.ShowPurplePropertyCard(cardNo);
-                break;
-            case GameMode.PlatformState.LightBlueProperty:
-                Debug.Log("LightBlueProperty");
-                Monopoly.instance.ShowLightBluePropertyCard(cardNo);
-                //Monopoly.instance.Next(/*Monopoly.action.moveAhead*/);
-                break;
-            case GameMode.PlatformState.DarkBlueProperty:
-                Debug.Log("DarkBlueProperty");
-                mon.ShowDarkBlueCard(cardNo);
-                break;
-            case GameMode.PlatformState.OrangeProperty:
-                Debug.Log("OrangeProperty");
-                Monopoly.instance.Next();
-                break;
-            case GameMode.PlatformState.PinkProperty:
-                Debug.Log("PinkProperty");
-                Monopoly.instance.Next();
-                break;
-            case GameMode.PlatformState.RedProperty:
-                Debug.Log("RedProperty");
-                Monopoly.instance.Next();
-                break;
-            case GameMode.PlatformState.YellowProperty:
-                Debug.Log("YellowProperty");
-                Monopoly.instance.Next();
-                break;
-            case GameMode.PlatformState.GreenProperty:
-                Debug.Log("GreenProperty");
-                Monopoly.instance.Next();
-                break;
-            case GameMode.PlatformState.StartPoint:
-                Monopoly.instance.Next();
-                Debug.Log("StartPoint");
-                break;
-            case GameMode.PlatformState.CommunityChest:
-                Monopoly.instance.Next();
-                Debug.Log("CommunityChest");
-                break;
-            case GameMode.PlatformState.Pay:
-                mon.ShowPayCard(cardNo);
-                break;
-            case GameMode.PlatformState.RailRoad:
-                Monopoly.instance.Next();
-                Debug.Log("RailRoad");
-                break;
-            case GameMode.PlatformState.Chance:
-                Monopoly.instance.Next();
-                Debug.Log("Chance");
-                break;
-            case GameMode.PlatformState.FreeParking:
-                Monopoly.instance.Next();
-                Debug.Log("FreeParking");
-                break;
-            case GameMode.PlatformState.GoToJail:
-                Debug.Log("GoToJail");
-                Monopoly.instance.Next();
-                break;
-        }
-    }
+    //public void WhatToDo(PlatformState state, int cardNo)
+    //{
+    //    switch (state)
+    //    {
+    //        case GameMode.PlatformState.PurpleProperty:
+    //            mon.ShowPurplePropertyCard(cardNo);
+    //            break;
+    //        case GameMode.PlatformState.LightBlueProperty:
+    //            Debug.Log("LightBlueProperty");
+    //            Monopoly.instance.ShowLightBluePropertyCard(cardNo);
+    //            //Monopoly.instance.Next(/*Monopoly.action.moveAhead*/);
+    //            break;
+    //        case GameMode.PlatformState.DarkBlueProperty:
+    //            Debug.Log("DarkBlueProperty");
+    //            mon.ShowDarkBlueCard(cardNo);
+    //            break;
+    //        case GameMode.PlatformState.OrangeProperty:
+    //            Debug.Log("OrangeProperty");
+    //            Monopoly.instance.Next();
+    //            break;
+    //        case GameMode.PlatformState.PinkProperty:
+    //            Debug.Log("PinkProperty");
+    //            Monopoly.instance.Next();
+    //            break;
+    //        case GameMode.PlatformState.RedProperty:
+    //            Debug.Log("RedProperty");
+    //            Monopoly.instance.Next();
+    //            break;
+    //        case GameMode.PlatformState.YellowProperty:
+    //            Debug.Log("YellowProperty");
+    //            Monopoly.instance.Next();
+    //            break;
+    //        case GameMode.PlatformState.GreenProperty:
+    //            Debug.Log("GreenProperty");
+    //            Monopoly.instance.Next();
+    //            break;
+    //        case GameMode.PlatformState.StartPoint:
+    //            Monopoly.instance.Next();
+    //            Debug.Log("StartPoint");
+    //            break;
+    //        case GameMode.PlatformState.CommunityChest:
+    //            Monopoly.instance.Next();
+    //            Debug.Log("CommunityChest");
+    //            break;
+    //        case GameMode.PlatformState.Pay:
+    //            mon.ShowPayCard(cardNo);
+    //            break;
+    //        case GameMode.PlatformState.RailRoad:
+    //            Monopoly.instance.Next();
+    //            Debug.Log("RailRoad");
+    //            break;
+    //        case GameMode.PlatformState.Chance:
+    //            Monopoly.instance.Next();
+    //            Debug.Log("Chance");
+    //            break;
+    //        case GameMode.PlatformState.FreeParking:
+    //            Monopoly.instance.Next();
+    //            Debug.Log("FreeParking");
+    //            break;
+    //        case GameMode.PlatformState.GoToJail:
+    //            Debug.Log("GoToJail");
+    //            Monopoly.instance.Next();
+    //            break;
+    //    }
+    //}
 }
