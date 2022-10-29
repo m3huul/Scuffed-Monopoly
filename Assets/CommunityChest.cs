@@ -11,30 +11,23 @@ public class CommunityChest : MonoBehaviour
     //execute after roll
     //randomRange sprites
     //return sprite
-    public Sprite RandomSprite(string LN)
+    public KeyValuePair<int, Sprite> RandomSprite(string LN)
     {
         if(LN == "Chance")
         {
-            Sprite n = Chance[Random.Range(0, Chance.Count)];
-            print(n);
-            return n;
+            int n = Random.Range(0, Sprites.Count);
+            Sprite s = Chance[n];
+            
+            return new KeyValuePair<int, Sprite>(n, s);
         }
         else if(LN == "Community")
         {
-            Sprite s = Sprites[Random.Range(0, Sprites.Count)];
-            print(s);
-            return s;
+            int n = Random.Range(0, Sprites.Count);
+            Sprite s = Sprites[n];
+            
+            return new KeyValuePair<int, Sprite>(n,s);
         }
-        return null;
+        return new KeyValuePair<int, Sprite>(0, null);
     }
-
-    public Sprite RandomChance()
-    {
-        Sprite s = Chance[Random.Range(0, Sprites.Count)];
-        print(s);
-        return s;
-    }
-
-    //print sprite details
 }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class plat : MonoBehaviour
 {
+    public int propertyId;
     public string Name;
     public string price;
     public string rent;
