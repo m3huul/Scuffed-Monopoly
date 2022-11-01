@@ -39,10 +39,10 @@ public class Platforms : MonoBehaviour
                 propertyCard.GetComponent<CardDisplay>().card(p.propertyId, p.Name, p.price, p.mortgage, p.rent, "", p.house1, p.house2, p.house3, p.house4, p.hotel, p.price_per_house, p.hotel);
                 break;
             case GameMode.PlatformState.CommunityChest:
-                CommunityChest c = communityChestDetails.GetComponent<CommunityChest>();
-                KeyValuePair<int, Sprite> Cchest = c.RandomSprite("Community");
-                communityChestCard.transform.GetChild(0).GetComponent<Image>().sprite = Cchest.Value;
-                communityChestCardIndex = Cchest.Key;
+                //CommunityChest c = communityChestDetails.GetComponent<CommunityChest>();
+                //KeyValuePair<int, Sprite> Cchest = c.RandomSprite("Community");
+                //communityChestCard.transform.GetChild(0).GetComponent<Image>().sprite = Cchest.Value;
+                //communityChestCardIndex = Cchest.Key;
                 break;
         }
     }

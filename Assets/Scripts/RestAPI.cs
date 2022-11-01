@@ -40,7 +40,6 @@ public class RestAPI : MonoBehaviour
             for (int i = 0; i < allPlatforms.Count; i++)
             {
                 plat n = allPlatforms[i].GetComponent<plat>();
-                n.propertyId = jSONNode["data"][i]["property_id"];
                 n.Name = jSONNode["data"][i]["property_name"];
                 n.price = jSONNode["data"][i]["price"];
                 n.rent = jSONNode["data"][i]["rent"];
