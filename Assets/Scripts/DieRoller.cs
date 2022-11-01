@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DieRoller : MonoBehaviour
@@ -26,6 +27,7 @@ public class DieRoller : MonoBehaviour
         }
     }
 
+    
     public IEnumerator RollDie()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -64,7 +66,9 @@ public class DieRoller : MonoBehaviour
         
         for (int i = 0; i < dies.Length; i++)
             dieRollResults[i] = dies[i].GetDieValue();
-        
-        Debug.Log("Got " + dieRollResults);
+
+        GameMode.instance.MovePlayer(2);
+
+        Debug.Log("Got " + dieRollResults.Sum().ToString());
     }
 }
