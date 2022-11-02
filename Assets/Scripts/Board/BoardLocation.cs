@@ -37,7 +37,6 @@ public abstract class BoardLocation : MonoBehaviour
 
     protected IEnumerator LerpCameraViewBackToMainBoardView()
     {
-        print("yes");
         yield return CameraController.instance.LerpToViewBoardTarget(1f);
     }
 

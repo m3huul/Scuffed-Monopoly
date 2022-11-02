@@ -14,4 +14,9 @@ public class Utility : Ownable
 
 		return toCharge;
 	}
+
+	protected override bool BuildHouses(Ownable owner)
+	{
+		return false;
+	}
 }

@@ -17,4 +17,9 @@ public class Railroad : Ownable
 
         return toCharge;
     }
+
+    protected override bool BuildHouses(Ownable owner)
+    {
+        return false;
+    }
 }

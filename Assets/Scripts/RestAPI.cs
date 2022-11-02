@@ -9,8 +9,15 @@ using static System.Net.WebRequestMethods;
 
 public class RestAPI : MonoBehaviour
 {
-    public List<GameObject> allPlatforms;
+    public static RestAPI Instance { get; private set; }
+    public List<GameObject> properties;
+    public List<String> colors;
     //List<PropertyInfo> list = new List<PropertyInfo>();
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -32,57 +39,23 @@ public class RestAPI : MonoBehaviour
             Debug.Log("Json data" + EncryptedString);
             JSONNode jSONNode = JSON.Parse(EncryptedString);
 
-
-            int fieldsCount = jSONNode["data"][0].Count;
-            int totalProperties = jSONNode["data"].Count;
-            //FindLengthOfUnitstoShow();
-
-            for (int i = 0; i < allPlatforms.Count; i++)
+            for (int i = 0; i < properties.Count; i++)
             {
-                plat n = allPlatforms[i].GetComponent<plat>();
-                n.Name = jSONNode["data"][i]["property_name"];
-                n.price = jSONNode["data"][i]["price"];
-                n.rent = jSONNode["data"][i]["rent"];
-                n.house1 = jSONNode["data"][i]["house1"];
-                n.house2 = jSONNode["data"][i]["house2"];
-                n.house3 = jSONNode["data"][i]["house3"];
-                n.house4 = jSONNode["data"][i]["house4"];
-                n.price_per_house = jSONNode["data"][i]["price_per_house"];
-                n.hotel = jSONNode["data"][i]["hotel"];
-                n.mortgage = jSONNode["data"][i]["mortgage"];
-
+                Property property = properties[i].GetComponent<Property>();
+                property.colorName = jSONNode["data"][i]["property_name"];
+                colors.Add(jSONNode["data"][i]["property_name"]);
+                property.purchasePrice = jSONNode["data"][i]["price"];
+                property.mortgageValue = jSONNode["data"][i]["mortgage"];
             }
+
+            colors.Add("Brown");
+            colors.Add("Brown");
+            colors.Add("Yellow");
+            colors.Add("Yellow");
+            colors.Add("Yellow");
         }
     }
 }
 
 
-public struct PropertyInfo
-{
-    public string propertyId;
-    public string porpertyName;
-    public string price;
-    public string rent;
-    public string house1;
-    public string house2;
-    public string house3;
-    public string house4;
-    public string housePrice;
-    public string hotel;
-    public string mortgage;
 
-    public PropertyInfo(string propertyId, string propertyName, string price, string rent, string house1, string house2, string house3, string house4, string housePrice, string hotel, string mortgage)
-    {
-        this.propertyId = propertyId;
-        this.porpertyName = propertyName;
-        this.price = price;
-        this.rent = rent;
-        this.house1 = house1;
-        this.house2 = house2;
-        this.house3 = house3;
-        this.house4 = house4;   
-        this.housePrice = housePrice;
-        this.hotel = hotel;
-        this.mortgage = mortgage;
-    }
-}

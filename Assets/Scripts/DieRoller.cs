@@ -65,6 +65,6 @@ public class DieRoller : MonoBehaviour
         for (int i = 0; i < dies.Length; i++)
             dieRollResults[i] = dies[i].GetDieValue();
         
-        Debug.Log("Got " + dieRollResults);
+        Debug.Log("Got " + dieRollResults[0]+ " " + dieRollResults[1]);
     }
 }

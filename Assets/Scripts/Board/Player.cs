@@ -7,28 +7,41 @@ public class Player : MonoBehaviour
 {
     private static int instantiatedPlayers = 0;
     
-    [HideInInspector] public List<Ownable> currentOwnables = new List<Ownable>();
+    /*[HideInInspector]*/ public List<Ownable> currentOwnables = new List<Ownable>();
     
     private string playerName;
-    public void SetPlayerName(string playerName)
-    {
-        this.playerName = playerName;
-    }
+
+    public AI ai;
+
+    private BalanceTracker balanceTracker;
+
+    private BoardLocation currentSpace;
+
+    public bool isInJail;
 
     // Incremented by PassGo.  
     public int timesPastGo = 0;
 
     private bool isAI = false;
+
+    public void SetPlayerName(string playerName)
+    {
+        this.playerName = playerName;
+        gameObject.name = playerName;
+    }
+
     public void SetIsAI(bool isAI)
     {
         this.isAI = isAI;
+        if (isAI)
+            ai = gameObject.AddComponent<AI>();
+
     }
     public bool IsAI()
     {
         return isAI;
     }
 
-    private BalanceTracker balanceTracker;
     public void SetBalanceTracker(BalanceTracker balanceTracker)
     {
         this.balanceTracker = balanceTracker;
@@ -50,7 +63,6 @@ public class Player : MonoBehaviour
         return accountBalance;
     }
     
-    private BoardLocation currentSpace;
 
     public void Initialize()
     {
@@ -131,4 +143,6 @@ public class Player : MonoBehaviour
         // Tell the space we ended on that we landed on it.  
         yield return currentSpace.LandOn(this);
     }
+
+
 }

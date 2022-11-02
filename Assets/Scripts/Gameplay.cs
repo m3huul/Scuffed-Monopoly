@@ -3,23 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Purchasing;
 
 public class Gameplay : MonoBehaviour
 {
     public static Gameplay instance;
 
-    private List<Player> players;
+    public List<Player> players;
 
     [SerializeField] private GameObject playerPrefab;
 
     [SerializeField] private BalanceTracker[] balanceTrackers;
 
+    public int result;
     void Awake()
     {
         instance = this;
         
         players = new List<Player>();
     }
+
+
 
     public void RegisterNewPlayer(string playerName, bool ai)
     {
@@ -44,7 +48,7 @@ public class Gameplay : MonoBehaviour
         
         newPlayer.SetPlayerName(playerName);
         newPlayer.SetIsAI(ai);
-        
+
         players.Add(newPlayer);
         
         newPlayer.Initialize();
@@ -62,13 +66,19 @@ public class Gameplay : MonoBehaviour
 
     private IEnumerator PlayGame()
     {
-        //yield return CameraController.instance.LerpToViewBoardTarget(5f);     Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
+        //yield return CameraController.instance.LerpToViewBoardTarget(5f); Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
         
         // Simulate taking turns.  
         for (int i = 0; i < 35; i++)
         {
             foreach (Player player in players)
-            {   
+            {
+                //if (player.isInJail)
+                //{
+                //    TODO Jail logic
+                //}
+
+
                 bool doubles = true;
                 int doubleRolls = 0;
                 while (doubles)
@@ -84,7 +94,7 @@ public class Gameplay : MonoBehaviour
                             if (chosenAction != TurnActions.UserAction.ROLL)
                             {
                                 Debug.LogError("Not implemented >:(");
-                                yield return new WaitForSeconds(2);
+                                yield return new WaitForSeconds(2); //TODO implement trade and mortgage 
                             }
                         }
                     }
@@ -97,7 +107,7 @@ public class Gameplay : MonoBehaviour
                     if (dieRollResults.Length != dieRollResults.Distinct().Count())
                     {
                         doubleRolls++;
-
+                        
                         if (doubleRolls >= 3)
                         {
                             yield return player.JumpToSpace(InJail.instance, 1f);
@@ -108,18 +118,19 @@ public class Gameplay : MonoBehaviour
                     {
                         doubles = false;
                     }
-                        
-                    yield return player.MoveSpaces(dieRollResults.Sum());
+
+                    //result = dieRollResults.Sum(); 
+                    yield return player.MoveSpaces( result );
                 }
                 
                 if (!player.IsAI())
                 {
-                    yield return TurnActions.instance.GetUserInput(false);
+                    //yield return TurnActions.instance.GetUserInput(false);
                     TurnActions.UserAction chosenAction = TurnActions.UserAction.UNDECIDED;
-                    
+
                     while (chosenAction != TurnActions.UserAction.ROLL)
                     {
-                        yield return TurnActions.instance.GetUserInput(true);
+                        yield return TurnActions.instance.GetUserInput(false);
                         chosenAction = TurnActions.instance.GetChosenAction();
 
                         if (chosenAction != TurnActions.UserAction.ROLL)

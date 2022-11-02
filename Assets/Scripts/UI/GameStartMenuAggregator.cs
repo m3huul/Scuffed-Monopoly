@@ -8,14 +8,23 @@ public class GameStartMenuAggregator : MonoBehaviour
     [SerializeField] private InputField[] selectionPanels = new InputField[4];
     [SerializeField] private Toggle[] aiToggles = new Toggle[4];
     [SerializeField] private GameObject selectionPanel3Parent, selectionPanel4Parent;
+    private int aiCount, playerCount;
 
     private string GetNameFromCreationPanel(int num, InputField nameField, Toggle aiToggle)
     {
         if (aiToggle.isOn)
-            return "AI " + num;
+        {
+            aiCount++;
+            return "AI " + aiCount;
+        }
+            
 
         if (nameField.text.Equals(""))
-            return "Player " + num;
+        {
+            playerCount++;
+            return "Player " + playerCount;
+        }
+            
 
         return nameField.text;
     }

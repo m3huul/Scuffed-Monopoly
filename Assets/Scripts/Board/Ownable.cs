@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class Ownable : BoardLocation
 {   
-    protected Player owner;
+    public Player owner;
 
-    [SerializeField] private string propertyName;
-    [SerializeField] private int purchasePrice;
-    [SerializeField] private int mortgageValue;
+    [SerializeField] public string propertyName;
+    [SerializeField] public string colorName;
+    [SerializeField] public int purchasePrice;
+    [SerializeField] public int mortgageValue;
     [SerializeField] public Sprite deed;
     
     public sealed override void PassBy(Player player)
@@ -29,15 +30,32 @@ public abstract class Ownable : BoardLocation
                     player.currentOwnables.Add(this);
                     owner = player;
                 }
+                else
+                {
+                    //TODO Auction logic here.
+                }
 
                 yield return LerpCameraViewBackToMainBoardView();
             }
             else
             {
-                // TODO more complex AI logic.  
-                player.AdjustBalanceBy(-purchasePrice);
-                player.currentOwnables.Add(this);
-                owner = player;
+                print("ai will choose either to buy or skip");
+                yield return new WaitForSeconds(2f);
+
+                string result = player.ai.BuyOrSkip(this);
+                if (result == "buy")
+                {
+                    player.AdjustBalanceBy(-purchasePrice);
+                    player.currentOwnables.Add(this);
+                    owner = player;
+                    print(result);
+                }
+                else if(result == "skip")
+                {
+                    print(result);
+                }
+                else
+                    print(result);
             }
         }
         else
@@ -48,8 +66,21 @@ public abstract class Ownable : BoardLocation
                 player.AdjustBalanceBy(-toCharge);
                 owner.AdjustBalanceBy(toCharge);
             }
+            else
+            {
+                if (BuildHouses(this))
+                {
+                    print("you can build house");
+                }
+                //else
+                //{
+                //    print("you dont have all the properties of this color");
+                //}
+            }
         }
     }
 
     protected abstract int ChargePlayer();
+
+    protected abstract bool BuildHouses(Ownable owner);
 }
