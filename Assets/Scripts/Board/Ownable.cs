@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Ownable : BoardLocation
@@ -11,6 +12,7 @@ public abstract class Ownable : BoardLocation
     [SerializeField] public int purchasePrice;
     [SerializeField] public int mortgageValue;
     [SerializeField] public Sprite deed;
+    [SerializeField] public MeshRenderer OwnerColorIndicator;
     
     public sealed override void PassBy(Player player)
     {}
@@ -29,6 +31,9 @@ public abstract class Ownable : BoardLocation
                     player.AdjustBalanceBy(-purchasePrice);
                     player.currentOwnables.Add(this);
                     owner = player;
+
+                    OwnerColorIndicator.material = player.playerColor;
+                    OwnerColorIndicator.gameObject.SetActive(true);
                 }
                 else
                 {

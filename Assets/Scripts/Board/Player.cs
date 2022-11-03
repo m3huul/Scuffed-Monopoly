@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     
     private string playerName;
 
+    public Material playerColor;
+
     public AI ai;
 
     private BalanceTracker balanceTracker;
@@ -47,10 +49,13 @@ public class Player : MonoBehaviour
         this.balanceTracker = balanceTracker;
         
         this.balanceTracker.UpdateName(playerName);
+
     }
     
     // Money
     private int accountBalance = 1500;
+
+    public bool hasJailFreeCard;
 
     public void AdjustBalanceBy(int balance)
     {
@@ -130,6 +135,8 @@ public class Player : MonoBehaviour
             
             float timeForJump = .9f * (Mathf.Sqrt((i * 1.0f) / spaces + .8f) - .35f);
 
+            transform.LookAt(currentSpace.next.transform);
+
             yield return JumpToSpace(targetSpace, timeForJump);
             
             // Rotate if we're on a corner space.  
@@ -137,6 +144,7 @@ public class Player : MonoBehaviour
                 currentSpace is FreeParking)
             {
                 yield return RotateAdditionalDegrees(movingForward ? 90 : -90, 1f);
+                //transform.LookAt(currentSpace.next.transform.position);
             }
         }
         

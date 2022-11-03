@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
@@ -12,8 +13,9 @@ public class CommunityChest : BoardLocation
 
     public override IEnumerator LandOn(Player player)
     {
-        int i = Random.Range(0, 8);
-        //i = 6;  print(i);   
+        yield return new WaitForSeconds(1f);
+        int i = UnityEngine.Random.Range(0, 8);
+        i = 4;  //print(i);   
         switch (i)
         {
             case 0: //ADVANCE TO GO
@@ -34,7 +36,9 @@ public class CommunityChest : BoardLocation
                 break;
             case 4: //GO TO JAIL WITHOUT COLLECTION 200
                 print("GO TO JAIL WITHOUT COLLECTION 200");
-                yield return player.JumpToSpace(InJail.instance, 2f);
+                //int moveTo = Int32.Parse(this.gameObject.name) > Int32.Parse(InJail.instance.gameObject.name) ? Int32.Parse(InJail.instance.gameObject.name) - Int32.Parse(this.gameObject.name) : Int32.Parse(InJail.instance.gameObject.name) - Int32.Parse(this.gameObject.name);
+                yield return player.MoveSpaces(Int32.Parse(InJail.instance.gameObject.name) - Int32.Parse(this.gameObject.name));
+                //yield return player.JumpToSpace(InJail.instance, 2f);
                 break;
             case 5: //LIFE INSURANCE MATURES, COLLECT 100
                 print("LIFE INSURANCE MATURES, COLLECT 100");

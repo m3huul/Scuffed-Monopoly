@@ -6,12 +6,14 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.Networking;
 using static System.Net.WebRequestMethods;
+using Unity.VisualScripting;
 
 public class RestAPI : MonoBehaviour
 {
     public static RestAPI Instance { get; private set; }
     public List<GameObject> properties;
     public List<String> colors;
+    public Property prop;
     //List<PropertyInfo> list = new List<PropertyInfo>();
 
     private void Awake()
@@ -38,21 +40,44 @@ public class RestAPI : MonoBehaviour
             string EncryptedString = request.downloadHandler.text;
             Debug.Log("Json data" + EncryptedString);
             JSONNode jSONNode = JSON.Parse(EncryptedString);
-
-            for (int i = 0; i < properties.Count; i++)
+            for(int i = 0; i < jSONNode["data"].Count; i++)
             {
-                Property property = properties[i].GetComponent<Property>();
-                property.colorName = jSONNode["data"][i]["property_name"];
-                colors.Add(jSONNode["data"][i]["property_name"]);
-                property.purchasePrice = jSONNode["data"][i]["price"];
-                property.mortgageValue = jSONNode["data"][i]["mortgage"];
+                for(int j=0; j < properties.Count; j++)
+                {
+                    if (Int32.Parse(jSONNode["data"][i]["property_id"]) == Int32.Parse(properties[j].name))
+                    {
+                        prop = properties[j].GetComponent<Property>();
+                        if (prop != null)
+                        {
+                            prop.propertyName = jSONNode["data"][i]["property_name"];
+                            prop.colorName = jSONNode["data"][i]["color"];
+                            prop.purchasePrice = jSONNode["data"][i]["price"];
+                            prop.mortgageValue = jSONNode["data"][i]["mortgage"];
+                            prop.housePrice = jSONNode["data"][i]["price_per_house"];
+                            prop.hotelPrice = jSONNode["data"][i]["hotel"];
+                            prop.rentPrices.Clear();
+                            prop.rentPrices.Add(jSONNode["data"][i]["rent"]);
+                            prop.rentPrices.Add(jSONNode["data"][i]["house1"]);
+                            prop.rentPrices.Add(jSONNode["data"][i]["house2"]);
+                            prop.rentPrices.Add(jSONNode["data"][i]["house3"]);
+                            prop.rentPrices.Add(jSONNode["data"][i]["house4"]);
+                        }
+                        break;
+                    }
+                }
+                
             }
 
-            colors.Add("Brown");
-            colors.Add("Brown");
-            colors.Add("Yellow");
-            colors.Add("Yellow");
-            colors.Add("Yellow");
+
+
+            //for (int i = 0; i < properties.Count; i++)
+            //{
+            //    Property property = properties[i].GetComponent<Property>();
+            //    property.colorName = jSONNode["data"][i]["property_name"];
+            //    colors.Add(jSONNode["data"][i]["property_name"]);
+            //    property.purchasePrice = jSONNode["data"][i]["price"];
+            //    property.mortgageValue = jSONNode["data"][i]["mortgage"];
+            //}
         }
     }
 }

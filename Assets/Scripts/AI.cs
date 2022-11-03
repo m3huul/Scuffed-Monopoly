@@ -22,6 +22,7 @@ public class AI : MonoBehaviour
         int[] fifty_fifty = { 1, 1, 1, 2, 2, 2 };
         int[] seventy_thirty = { 1, 1, 1, 1, 1, 1, 1, 2, 2, 2 };
         int[] eighty_twenty = { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 };
+        int[] ninty_ten = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 2 };
 
 
         var duplicates = colorSet.GroupBy(i => i).Where(g => g.Count() > 1).Select(g => g.Key);
@@ -55,7 +56,7 @@ public class AI : MonoBehaviour
             }
         }
 
-        return Probability(seventy_thirty, ownable);
+        return Probability(ninty_ten, ownable);
     }
 
     public string Probability(int[] i, Ownable own)

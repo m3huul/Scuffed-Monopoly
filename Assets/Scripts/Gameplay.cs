@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
@@ -16,6 +17,8 @@ public class Gameplay : MonoBehaviour
     [SerializeField] private BalanceTracker[] balanceTrackers;
 
     public int result;
+
+ 
     void Awake()
     {
         instance = this;
@@ -23,9 +26,12 @@ public class Gameplay : MonoBehaviour
         players = new List<Player>();
     }
 
+    private void Update()
+    {
+        
+    }
 
-
-    public void RegisterNewPlayer(string playerName, bool ai)
+    public void RegisterNewPlayer(string playerName, bool ai, Material playerColor)
     {
         // Decide an offset vector so they don't overlap.  
         Vector3 placementOffsetVector = Vector3.zero;
@@ -48,7 +54,7 @@ public class Gameplay : MonoBehaviour
         
         newPlayer.SetPlayerName(playerName);
         newPlayer.SetIsAI(ai);
-
+        newPlayer.playerColor=playerColor;
         players.Add(newPlayer);
         
         newPlayer.Initialize();
@@ -73,18 +79,40 @@ public class Gameplay : MonoBehaviour
         {
             foreach (Player player in players)
             {
-                //if (player.isInJail)
-                //{
-                //    TODO Jail logic
-                //}
-
 
                 bool doubles = true;
                 int doubleRolls = 0;
                 while (doubles)
                 {
                     if (!player.IsAI())
-                    {   
+                    {
+                        if (player.isInJail)
+                        {
+                            JailActions.JailAction choosenAction = JailActions.JailAction.UNDECIDED;
+                            while(choosenAction == JailActions.JailAction.UNDECIDED)
+                            {
+                                yield return JailActions.Instance.GetUserInput(player.hasJailFreeCard);
+                                choosenAction = JailActions.Instance.GetJailAction();
+
+                                if(choosenAction == JailActions.JailAction.ROLL)
+                                {
+                                    print("rolling");
+                                }
+                                if(choosenAction == JailActions.JailAction.PAY)
+                                {
+                                    player.AdjustBalanceBy(-50);
+                                    player.isInJail = false; 
+                                    print(player.name + " paid 50 to get out of jail");
+                                }
+                                if(choosenAction == JailActions.JailAction.JAILFREECARD)
+                                {
+                                    player.hasJailFreeCard = false;
+                                    player.isInJail = false;
+                                    print(player.name + " used their jail free card");
+                                }
+                            }
+                        }
+
                         TurnActions.UserAction chosenAction = TurnActions.UserAction.UNDECIDED;
                         while (chosenAction != TurnActions.UserAction.ROLL)
                         {
@@ -98,6 +126,15 @@ public class Gameplay : MonoBehaviour
                             }
                         }
                     }
+                    else
+                    {
+                        if (player.isInJail)
+                        {
+                            player.isInJail = false;  
+                            //Ai logic if hes in jail
+                        }
+                    }
+
 
                     // Roll dies.  
                     yield return DieRoller.instance.RollDie();
@@ -117,10 +154,17 @@ public class Gameplay : MonoBehaviour
                     else
                     {
                         doubles = false;
+                        if (player.isInJail)
+                            break;
                     }
 
-                    result = dieRollResults.Sum(); 
+                    //result = dieRollResults.Sum(); 
                     yield return player.MoveSpaces( result );
+
+                    if (player.isInJail)
+                    {
+                        break;
+                    }
                 }
                 
                 if (!player.IsAI())

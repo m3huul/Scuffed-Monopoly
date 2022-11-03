@@ -9,10 +9,10 @@ public class Property : Ownable
     [SerializeField] private List<Property> otherProperties;
 
     [Tooltip("These are cumulative, don't write total price")]
-    [SerializeField] private int housePrice;
-    
+    [SerializeField] public int housePrice, hotelPrice;
+
     [Tooltip("These are NOT cumulative, write total price")]
-    [SerializeField] private int[] rentPrices = new int[6];
+    [SerializeField] public List<int> rentPrices;
     
     private int currentUpgradeLevel;
 

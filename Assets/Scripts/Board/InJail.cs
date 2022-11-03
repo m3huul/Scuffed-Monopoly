@@ -12,10 +12,13 @@ public class InJail : BoardLocation
     
     public override void PassBy(Player player)
     {
+        player.isInJail = false;
     }
 
     public override IEnumerator LandOn(Player player)
     {
+        player.isInJail = true;
+        player.transform.LookAt(transform.parent.GetChild(0).transform);
         yield return null;
     }
 }
