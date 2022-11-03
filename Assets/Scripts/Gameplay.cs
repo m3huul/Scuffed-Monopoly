@@ -119,7 +119,7 @@ public class Gameplay : MonoBehaviour
                         doubles = false;
                     }
 
-                    //result = dieRollResults.Sum(); 
+                    result = dieRollResults.Sum(); 
                     yield return player.MoveSpaces( result );
                 }
                 
