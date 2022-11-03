@@ -6,7 +6,7 @@ public class GameMode : MonoBehaviour
 {
     public static GameMode instance;
 
-    public Monopoly mon;
+    //public Monopoly mon;
     [SerializeField] public GameObject[] players;
     public int maxPlayers;
     public int numberOfPlayers;
@@ -26,7 +26,7 @@ public class GameMode : MonoBehaviour
     
     private void Awake()
     {
-        Monopoly.instance.nextTurn += NextTurn;
+        //Monopoly.instance.nextTurn += NextTurn;
         instance = this;
     }
 
@@ -55,7 +55,34 @@ public class GameMode : MonoBehaviour
         }
     }
 
+    public void amountDeducted(int x)
+    {
+        playerMoney[playerIndex] -= x;
+    }
 
+    public void amountAdded(int x)
+    {
+        playerMoney[playerIndex] += x;
+    }
+
+    public IEnumerator DoCommunityChestAction(int i)
+    {
+        yield return new WaitForSeconds(5f);
+
+        //mon.CommunityChestCard.SetActive(false);
+        
+        switch (i)
+        {
+            case 0:
+                break;
+            case 1:
+                amountAdded(200);
+                break;
+            default:
+                break;
+        }
+        yield break;
+    }
 
     //public void WhatToDo(PlatformState state, int cardNo)
     //{
