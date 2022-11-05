@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Property : Ownable
 {
-    [SerializeField] private List<Property> otherProperties;
+    [SerializeField] public List<Property> otherProperties;
 
     [Tooltip("These are cumulative, don't write total price")]
     [SerializeField] public int housePrice, hotelPrice;
@@ -21,12 +21,24 @@ public class Property : Ownable
         return rentPrices[currentUpgradeLevel];
     }
 
-    protected override bool BuildHouses(Ownable owner)
+    public override bool BuildHouses(Ownable owner)
     {
         for(int i = 0; i < otherProperties.Count; i++)
         {
             if(otherProperties[i].owner != owner.owner || otherProperties[i].owner == null)
                 return false;
+        }
+        return true;
+    }
+
+    public override bool ColorSet(Player player)
+    {
+        foreach(Property p in otherProperties)
+        {
+            if(p.owner != player)
+            {
+                return false;
+            }
         }
         return true;
     }

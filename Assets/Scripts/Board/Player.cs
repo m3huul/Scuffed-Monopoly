@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour 
 {
     private static int instantiatedPlayers = 0;
     
@@ -59,6 +60,22 @@ public class Player : MonoBehaviour
 
     public void AdjustBalanceBy(int balance)
     {
+        if (balance < 0 && accountBalance - balance < 0)
+        {
+            List<int> mortgageValues = new();
+            foreach (Ownable ownable in currentOwnables)
+            {
+                mortgageValues.Add(ownable.mortgageValue);
+            }
+
+            mortgageValues = mortgageValues.OrderBy(i => i).ToList();
+            foreach (int value in mortgageValues)
+            {
+                //todo show all the properties player can mortgage and then a flow so he can mortgage them.
+            }
+        }
+        
+
         accountBalance += balance;
         balanceTracker.UpdateBalance(accountBalance);
     }

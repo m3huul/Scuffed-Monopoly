@@ -51,7 +51,7 @@ public class GameMode : MonoBehaviour
         else
         {
             print("bot");
-            Monopoly.instance.Roll();
+            
         }
     }
 

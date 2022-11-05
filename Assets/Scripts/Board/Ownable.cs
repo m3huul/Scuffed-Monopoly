@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,13 +8,23 @@ public abstract class Ownable : BoardLocation
 {   
     public Player owner;
 
+    public bool isMortgaged;
     [SerializeField] public string propertyName;
     [SerializeField] public string colorName;
     [SerializeField] public int purchasePrice;
     [SerializeField] public int mortgageValue;
     [SerializeField] public Sprite deed;
     [SerializeField] public MeshRenderer OwnerColorIndicator;
-    
+
+    public Vector3 position;
+    public Vector3 size;
+
+    protected override void AdditionalInit()
+    {
+        position = transform.position;
+        size = transform.localScale;
+    }
+
     public sealed override void PassBy(Player player)
     {}
 
@@ -28,8 +39,9 @@ public abstract class Ownable : BoardLocation
 
                 if (OwnablePurchaseDialog.instance.resultingDecision)
                 {
-                    player.AdjustBalanceBy(-purchasePrice);
                     player.currentOwnables.Add(this);
+                    // todo if colorset complete
+                    player.AdjustBalanceBy(-purchasePrice);
                     owner = player;
 
                     OwnerColorIndicator.material = player.playerColor;
@@ -85,7 +97,25 @@ public abstract class Ownable : BoardLocation
         }
     }
 
+    public void ShowUnMortgagedProperty()
+    {
+        if (!isMortgaged)
+        {
+            transform.position = new Vector3(position.x, position.y + .2f, position.z);
+            transform.localScale = new Vector3(size.x + .2f, size.y + .2f, size.z + .2f);
+        }
+    }
+
+    public void reset()
+    {
+        transform.position = position;
+        transform.localScale = size;
+    }
+
     protected abstract int ChargePlayer();
 
-    protected abstract bool BuildHouses(Ownable owner);
+    public abstract bool BuildHouses(Ownable owner);
+
+    public abstract bool ColorSet(Player player);
+    
 }

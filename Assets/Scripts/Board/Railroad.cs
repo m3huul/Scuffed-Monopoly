@@ -18,8 +18,13 @@ public class Railroad : Ownable
         return toCharge;
     }
 
-    protected override bool BuildHouses(Ownable owner)
+    public override bool BuildHouses(Ownable owner)
     {
         return false;
+    }
+
+    public override bool ColorSet(Player player)
+    {
+        throw new System.NotImplementedException();
     }
 }

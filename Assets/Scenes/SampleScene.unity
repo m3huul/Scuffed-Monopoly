@@ -1805,12 +1805,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Leicester Square
   colorName: 
   purchasePrice: 260
   mortgageValue: 150
   deed: {fileID: 21300000, guid: f91d015f9490240b1af61be311a3c4c0, type: 3}
   OwnerColorIndicator: {fileID: 1049229473}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1460053413}
   - {fileID: 1382217127}
@@ -2477,12 +2480,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Bow Street
   colorName: 
   purchasePrice: 180
   mortgageValue: 90
   deed: {fileID: 21300000, guid: c836f4f9212c7446aa55121ec747edea, type: 3}
   OwnerColorIndicator: {fileID: 1655608936}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1021592188}
   - {fileID: 241211949}
@@ -2743,13 +2749,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1701683663}
-  m_Father: {fileID: 2129818247}
+  m_Father: {fileID: 1989791560}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -45.054993, y: 0}
-  m_SizeDelta: {x: 80.37, y: -11.649963}
+  m_AnchoredPosition: {x: 278.90805, y: -0.7720947}
+  m_SizeDelta: {x: 80.37, y: -508.65015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90770034
 MonoBehaviour:
@@ -3625,7 +3631,7 @@ Transform:
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 5.207, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1.414, z: 5}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 637237157}
   m_Father: {fileID: 844428805}
@@ -3710,12 +3716,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Old Kent Road
   colorName: Brown
   purchasePrice: 60
-  mortgageValue: 50
+  mortgageValue: 80
   deed: {fileID: 21300000, guid: b720c42c8b1be46be9087825f71550af, type: 3}
   OwnerColorIndicator: {fileID: 637237155}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1242092528}
   housePrice: 30
@@ -4114,12 +4123,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Oxford Street
   colorName: 
   purchasePrice: 300
   mortgageValue: 200
   deed: {fileID: 21300000, guid: 5f9fc81124dd04ba7bd436490497e67f, type: 3}
   OwnerColorIndicator: {fileID: 695261618}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 746361622}
   - {fileID: 443785879}
@@ -5978,12 +5990,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Marylebone Station
   colorName: 
   purchasePrice: 200
   mortgageValue: 100
   deed: {fileID: 21300000, guid: 3604e6ba61b93428387011b69c87959b, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherRailroads:
   - {fileID: 1351693751}
   - {fileID: 1189629615}
@@ -6201,12 +6216,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Vine Street
   colorName: 
   purchasePrice: 200
   mortgageValue: 100
   deed: {fileID: 21300000, guid: e9a076f7a1bb84b0795ce665f43a52dc, type: 3}
   OwnerColorIndicator: {fileID: 1663355437}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 83136505}
   - {fileID: 1021592188}
@@ -7050,12 +7068,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Northumberland Avenue
   colorName: 
   purchasePrice: 160
   mortgageValue: 80
   deed: {fileID: 21300000, guid: abf897e4a4a444a71864266deabc789a, type: 3}
   OwnerColorIndicator: {fileID: 990877290}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1710297279}
   - {fileID: 876638173}
@@ -8538,12 +8559,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Pentonville Road
   colorName: 
   purchasePrice: 120
   mortgageValue: 60
   deed: {fileID: 21300000, guid: 4478ab098415743b09fa51d5ce5dd1a4, type: 3}
   OwnerColorIndicator: {fileID: 1619467806}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1482267332}
   - {fileID: 1552839279}
@@ -9239,12 +9263,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Electric Company
   colorName: 
   purchasePrice: 150
   mortgageValue: 75
   deed: {fileID: 21300000, guid: 0294a0252fe1044f089546cb603cbdce, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherUtility: {fileID: 449708265}
 --- !u!1 &351154142
 GameObject:
@@ -10506,12 +10533,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Mayfair
   colorName: 
   purchasePrice: 400
   mortgageValue: 200
   deed: {fileID: 21300000, guid: 9ef0cbeba8c0b44329669e2b3ea6939d, type: 3}
   OwnerColorIndicator: {fileID: 858537808}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 458628963}
   housePrice: 200
@@ -12435,12 +12465,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Bond Street
   colorName: 
   purchasePrice: 300
   mortgageValue: 200
   deed: {fileID: 21300000, guid: 911c0d809aeae4e5e859cdfb51fe148a, type: 3}
   OwnerColorIndicator: {fileID: 1291478153}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 746361622}
   - {fileID: 153934241}
@@ -12561,12 +12594,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Water Works
   colorName: 
   purchasePrice: 150
   mortgageValue: 75
   deed: {fileID: 21300000, guid: 76b621ae567a34750b43af72ec8d0e4b, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherUtility: {fileID: 350997904}
 --- !u!1 &450419831
 GameObject:
@@ -13094,12 +13130,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Park Lane
   colorName: 
   purchasePrice: 350
   mortgageValue: 175
   deed: {fileID: 21300000, guid: 9d707b3a2a6a34c0bb1dfc24dbd63bc1, type: 3}
   OwnerColorIndicator: {fileID: 439948719}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 378026700}
   housePrice: 200
@@ -14568,13 +14607,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2086114522}
-  m_Father: {fileID: 2129818247}
+  m_Father: {fileID: 1989791560}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 45, y: 0}
-  m_SizeDelta: {x: 80.369995, y: -11.649963}
+  m_AnchoredPosition: {x: -286.39197, y: -0.7720947}
+  m_SizeDelta: {x: 80.369995, y: -508.65015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &523535531
 MonoBehaviour:
@@ -19078,14 +19117,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719018363}
-  m_LocalRotation: {x: 0.15800317, y: -0.835547, z: 0.31104425, w: 0.42443824}
-  m_LocalPosition: {x: 7.5, y: 4.7, z: 6.6}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 10.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 40.837, y: -126.14101, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!4 &719549665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3725067943721667936, guid: 03139c29a0cc1894c94fcf7f1e423f99, type: 3}
@@ -19422,12 +19461,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Trafalgar Square
   colorName: 
   purchasePrice: 240
   mortgageValue: 120
   deed: {fileID: 21300000, guid: 217f83649750a4758b41a1ff6bee852d, type: 3}
   OwnerColorIndicator: {fileID: 18038057}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1514999681}
   - {fileID: 1308763204}
@@ -19821,12 +19863,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Regent Street
   colorName: 
   purchasePrice: 300
   mortgageValue: 200
   deed: {fileID: 21300000, guid: e82d2fca780484b4fb4a8a2dbc94523f, type: 3}
   OwnerColorIndicator: {fileID: 1545369377}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 153934241}
   - {fileID: 443785879}
@@ -20353,12 +20398,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Liverpool St. Station
   colorName: 
   purchasePrice: 200
   mortgageValue: 100
   deed: {fileID: 21300000, guid: 62fcf104a733941e79319e3b78abebc4, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherRailroads:
   - {fileID: 1351693751}
   - {fileID: 240120989}
@@ -22114,12 +22162,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 587937045}
-  m_Father: {fileID: 2129818247}
+  m_Father: {fileID: 1989791560}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -41}
+  m_AnchoredPosition: {x: -3.7144775, y: 206.72801}
   m_SizeDelta: {x: 140, y: 69.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846873554
@@ -22987,12 +23035,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Whitehall
   colorName: 
   purchasePrice: 140
   mortgageValue: 70
   deed: {fileID: 21300000, guid: f2dd9947514a14260b6df18e98344bf7, type: 3}
   OwnerColorIndicator: {fileID: 2126474935}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1710297279}
   - {fileID: 270985441}
@@ -26409,12 +26460,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Marlborough Street
   colorName: 
   purchasePrice: 180
   mortgageValue: 90
   deed: {fileID: 21300000, guid: 6d75e357543fb4a5cb38fe642d14574f, type: 3}
   OwnerColorIndicator: {fileID: 2076582246}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 83136505}
   - {fileID: 241211949}
@@ -30801,12 +30855,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Fenchurch St. Station
   colorName: 
   purchasePrice: 200
   mortgageValue: 100
   deed: {fileID: 21300000, guid: 75638f7ab9cbe4d979d12ae83b20e721, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherRailroads:
   - {fileID: 1351693751}
   - {fileID: 240120989}
@@ -32514,12 +32571,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Whitechapel Road
   colorName: Brown
   purchasePrice: 60
   mortgageValue: 50
   deed: {fileID: 21300000, guid: 43557fce762ad4b359f919436a868efb, type: 3}
   OwnerColorIndicator: {fileID: 1707607759}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 133543591}
   housePrice: 50
@@ -33782,12 +33842,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Fleet Street
   colorName: 
   purchasePrice: 220
   mortgageValue: 110
   deed: {fileID: 21300000, guid: 242e2cb3ba9634187adc76a6c711d248, type: 3}
   OwnerColorIndicator: {fileID: 1542996260}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1514999681}
   - {fileID: 743161784}
@@ -34963,12 +35026,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Kings Cross Station
   colorName: 
   purchasePrice: 200
   mortgageValue: 100
   deed: {fileID: 21300000, guid: a29282810acaa4690b6367c4f6000a83, type: 3}
   OwnerColorIndicator: {fileID: 0}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherRailroads:
   - {fileID: 240120989}
   - {fileID: 1189629615}
@@ -35034,7 +35100,7 @@ MonoBehaviour:
   - {fileID: 1036961795}
   - {fileID: 2037371961}
   - {fileID: 808915319}
-  result: 10
+  result: 1
 --- !u!1 &1362970530
 GameObject:
   m_ObjectHideFlags: 0
@@ -35822,12 +35888,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Piccadilly
   colorName: 
   purchasePrice: 280
   mortgageValue: 150
   deed: {fileID: 21300000, guid: 23881047cacd04545883ff945178a221, type: 3}
   OwnerColorIndicator: {fileID: 240815485}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 56784006}
   - {fileID: 1460053413}
@@ -38613,12 +38682,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Coventry Street
   colorName: 
   purchasePrice: 260
   mortgageValue: 150
   deed: {fileID: 21300000, guid: 92045aa7bca64487da76d7761768c2a2, type: 3}
   OwnerColorIndicator: {fileID: 286983780}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 56784006}
   - {fileID: 1382217127}
@@ -40006,12 +40078,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: The Angel, Islington
   colorName: 
   purchasePrice: 100
   mortgageValue: 50
   deed: {fileID: 21300000, guid: b987117deca31486b99cb73dbbcad732, type: 3}
   OwnerColorIndicator: {fileID: 582156374}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1552839279}
   - {fileID: 325284967}
@@ -40138,12 +40213,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Strand
   colorName: 
   purchasePrice: 220
   mortgageValue: 110
   deed: {fileID: 21300000, guid: cc28e5b07fdcb43bf80f8094312eb3b8, type: 3}
   OwnerColorIndicator: {fileID: 312048674}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1308763204}
   - {fileID: 743161784}
@@ -41980,12 +42058,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Euston Road
   colorName: 
   purchasePrice: 100
   mortgageValue: 50
   deed: {fileID: 21300000, guid: de3e37e647df04e37a56ab4e6454b76a, type: 3}
   OwnerColorIndicator: {fileID: 1061767710}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 1482267332}
   - {fileID: 325284967}
@@ -47253,12 +47334,15 @@ MonoBehaviour:
   preceding: {fileID: 0}
   next: {fileID: 0}
   owner: {fileID: 0}
+  isMortgaged: 0
   propertyName: Pall Mall
   colorName: 
   purchasePrice: 140
   mortgageValue: 70
   deed: {fileID: 21300000, guid: eae5cce13dabd451fa2f8d6ef09f8c1d, type: 3}
   OwnerColorIndicator: {fileID: 884516110}
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 0, y: 0, z: 0}
   otherProperties:
   - {fileID: 876638173}
   - {fileID: 270985441}
@@ -53142,14 +53226,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907736928}
-  m_LocalRotation: {x: 0.15800317, y: -0.835547, z: 0.31104425, w: 0.42443824}
-  m_LocalPosition: {x: 7.5, y: 4.7, z: 6.6}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 40.837, y: -126.14101, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!114 &1907736933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54236,6 +54320,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2129818247}
+  - {fileID: 90770033}
+  - {fileID: 523535530}
+  - {fileID: 846873553}
   m_Father: {fileID: 1005482351}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56943,9 +57030,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1171826521}
-  - {fileID: 90770033}
-  - {fileID: 523535530}
-  - {fileID: 846873553}
   m_Father: {fileID: 1989791560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

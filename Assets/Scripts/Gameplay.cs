@@ -17,7 +17,6 @@ public class Gameplay : MonoBehaviour
     [SerializeField] private BalanceTracker[] balanceTrackers;
 
     public int result;
-
  
     void Awake()
     {
@@ -72,14 +71,13 @@ public class Gameplay : MonoBehaviour
 
     private IEnumerator PlayGame()
     {
-        //yield return CameraController.instance.LerpToViewBoardTarget(5f); Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
+        yield return CameraController.instance.LerpToViewBoardTarget(2f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
         
         // Simulate taking turns.  
         for (int i = 0; i < 35; i++)
         {
             foreach (Player player in players)
             {
-
                 bool doubles = true;
                 int doubleRolls = 0;
                 while (doubles)
@@ -98,13 +96,13 @@ public class Gameplay : MonoBehaviour
                                 {
                                     print("rolling");
                                 }
-                                if(choosenAction == JailActions.JailAction.PAY)
+                                else if(choosenAction == JailActions.JailAction.PAY)
                                 {
                                     player.AdjustBalanceBy(-50);
                                     player.isInJail = false; 
                                     print(player.name + " paid 50 to get out of jail");
                                 }
-                                if(choosenAction == JailActions.JailAction.JAILFREECARD)
+                                else if(choosenAction == JailActions.JailAction.JAILFREECARD)
                                 {
                                     player.hasJailFreeCard = false;
                                     player.isInJail = false;
@@ -119,10 +117,37 @@ public class Gameplay : MonoBehaviour
                             yield return TurnActions.instance.GetUserInput(true);
                             chosenAction = TurnActions.instance.GetChosenAction();
 
-                            if (chosenAction != TurnActions.UserAction.ROLL)
+                            if (chosenAction == TurnActions.UserAction.ROLL)
                             {
+                                Debug.Log(player.name +" rolling");
+                            }
+                            else if(chosenAction == TurnActions.UserAction.MORTGAGE)
+                            {
+                                TurnActions.UserAction action = TurnActions.UserAction.UNDECIDED;
+                                while(action != TurnActions.UserAction.MORTGAGE)
+                                {
+                                    foreach(Ownable own in player.currentOwnables)
+                                    {
+                                        own.ShowUnMortgagedProperty();
+                                    }
+
+                                    yield return TurnActions.instance.GetUserInputMortgage(player);
+                                    action = TurnActions.instance.GetChosenActionnMortgage();
+
+                                    if(action == TurnActions.UserAction.MORTGAGE)
+                                    {
+                                        foreach(Ownable own in player.currentOwnables)
+                                        {
+                                            own.reset();
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {                               
                                 Debug.LogError("Not implemented >:(");
-                                yield return new WaitForSeconds(2); //TODO implement trade and mortgage 
+                                yield return new WaitForSeconds(2);
+                                
                             }
                         }
                     }
@@ -177,10 +202,37 @@ public class Gameplay : MonoBehaviour
                         yield return TurnActions.instance.GetUserInput(false);
                         chosenAction = TurnActions.instance.GetChosenAction();
 
-                        if (chosenAction != TurnActions.UserAction.ROLL)
+                        if (chosenAction == TurnActions.UserAction.ROLL)
+                        {
+                            Debug.Log(player.name + "'s turn ended");
+                        }
+                        else if (chosenAction == TurnActions.UserAction.MORTGAGE)
+                        {
+                            TurnActions.UserAction action = TurnActions.UserAction.UNDECIDED;
+                            while (action != TurnActions.UserAction.MORTGAGE)
+                            {
+                                foreach (Ownable own in player.currentOwnables)
+                                {
+                                    own.ShowUnMortgagedProperty();
+                                }
+
+                                yield return TurnActions.instance.GetUserInputMortgage(player);
+                                action = TurnActions.instance.GetChosenActionnMortgage();
+
+                                if (action == TurnActions.UserAction.MORTGAGE)
+                                {
+                                    foreach (Ownable own in player.currentOwnables)
+                                    {
+                                        own.reset();
+                                    }
+                                }
+                            }
+                        }
+                        else
                         {
                             Debug.LogError("Not implemented >:(");
                             yield return new WaitForSeconds(2);
+
                         }
                     }
                 }
