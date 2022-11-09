@@ -30,8 +30,9 @@ public class Gameplay : MonoBehaviour
         
     }
 
-    public void RegisterNewPlayer(string playerName, bool ai, Material playerColor)
+    public void RegisterNewPlayer(string playerName, bool ai, Material material)
     {
+        print(playerName);
         // Decide an offset vector so they don't overlap.  
         Vector3 placementOffsetVector = Vector3.zero;
         switch (players.Count)
@@ -52,8 +53,9 @@ public class Gameplay : MonoBehaviour
         Player newPlayer = ((GameObject)(Instantiate(playerPrefab, PassGo.instance.transform.position + placementOffsetVector, playerPrefab.transform.rotation))).GetComponent<Player>();
         
         newPlayer.SetPlayerName(playerName);
+
         newPlayer.SetIsAI(ai);
-        newPlayer.playerColor=playerColor;
+        newPlayer.playerColor = material;
         players.Add(newPlayer);
         
         newPlayer.Initialize();

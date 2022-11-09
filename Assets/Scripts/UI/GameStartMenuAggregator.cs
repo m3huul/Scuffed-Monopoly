@@ -20,14 +20,15 @@ public class GameStartMenuAggregator : MonoBehaviour
         }
             
 
-        if (nameField.text.Equals(""))
+        if (nameField.text == "")
         {
             playerCount++;
             return "Player " + playerCount;
         }
-            
-
-        return nameField.text;
+        else
+        {
+            return nameField.text;
+        }
     }
     
     public void StartGameClicked()
