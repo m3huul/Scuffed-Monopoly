@@ -41,7 +41,7 @@ public class GameStartMenuAggregator : MonoBehaviour
                 continue;
             }
             
-            Gameplay.instance.RegisterNewPlayer(GetNameFromCreationPanel(i, selectionPanels[i], aiToggles[i]), aiToggles[i].isOn, playerColors[i]);
+            Gameplay.instance.SetPlayerData(GetNameFromCreationPanel(i, selectionPanels[i], aiToggles[i]), aiToggles[i].isOn, playerColors[i]);
         }
         
         Gameplay.instance.StartGame();

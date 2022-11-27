@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Purchasing;
@@ -16,11 +17,19 @@ public class Gameplay : MonoBehaviour
 
     [SerializeField] private BalanceTracker[] balanceTrackers;
 
+    [SerializeField] private List<string> playerNames;
+    [SerializeField] private List<bool> AI;
+    [SerializeField] private List<Material> Materials;
+
     public int result;
  
     void Awake()
     {
-        instance = this;
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
         
         players = new List<Player>();
     }
@@ -28,6 +37,13 @@ public class Gameplay : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    public void SetPlayerData(string playerName, bool ai, Material material)
+    {
+        playerNames.Add(playerName);
+        AI.Add(ai);
+        Materials.Add(material);
     }
 
     public void RegisterNewPlayer(string playerName, bool ai, Material material)
@@ -59,11 +75,15 @@ public class Gameplay : MonoBehaviour
         players.Add(newPlayer);
         
         newPlayer.Initialize();
-        
+
         // Give this player a balance tracker.  
-        BalanceTracker balanceTracker = balanceTrackers[players.Count - 1];
-        balanceTracker.gameObject.SetActive(true);
-        newPlayer.SetBalanceTracker(balanceTracker);
+        Balance.instance.TurnBalanceTrackerOn(players.Count - 1);
+        newPlayer.SetBalanceTracker(Balance.instance.balanceTrackers[players.Count-1]);
+
+
+
+        //BalanceTracker balanceTracker = balanceTrackers[players.Count - 1];
+        //balanceTracker.gameObject.SetActive(true);
     }
 
     public void StartGame()
@@ -73,6 +93,13 @@ public class Gameplay : MonoBehaviour
 
     private IEnumerator PlayGame()
     {
+        yield return StartCoroutine( SceneLoader.Instance.LoadYourAsyncScene("Monopoly Board"));
+
+        for (int i = 0; i < playerNames.Count; i++)
+        {
+            RegisterNewPlayer(playerNames[i], AI[i], Materials[i]);
+        }
+
         yield return CameraController.instance.LerpToViewBoardTarget(2f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
         
         // Simulate taking turns.  

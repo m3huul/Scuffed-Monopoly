@@ -7,10 +7,13 @@ public class CameraController : MonoBehaviour
     public static CameraController instance;
 
     [SerializeField] private GameObject gameViewTarget;
+    [SerializeField] private GameObject[] CameraPositions;
+    [SerializeField] private float time; 
 
     void Awake()
     {
         instance = this;
+        //StartCoroutine(WaitForCameraRotation(time));
     }
 
     public IEnumerator LerpToCameraViewTargets(Vector3 position, Vector3 eulerAngles, float totalTime)
@@ -37,5 +40,14 @@ public class CameraController : MonoBehaviour
     public IEnumerator LerpToViewBoardTarget(float totalTime)
     {
         yield return LerpToCameraViewTargets(gameViewTarget.transform.position, gameViewTarget.transform.eulerAngles, totalTime);
+    }
+
+    public IEnumerator WaitForCameraRotation(float time)
+    {
+        for (int i = 0; i < CameraPositions.Length; i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            yield return LerpToCameraViewTargets(CameraPositions[i].transform.position, CameraPositions[i].transform.rotation.eulerAngles, time);
+        }
     }
 }
