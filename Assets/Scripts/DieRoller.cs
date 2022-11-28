@@ -1,23 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DieRoller : MonoBehaviour
 {
     public static DieRoller instance;
 
     private Vector3[] initialDiePositions;
-
+    private Button GoBackButton;
     private int[] dieRollResults;
-    public int[] GetDieRollResults()
-    {
-        return dieRollResults;
-    }
-    
+
     void Awake()
     {
         instance = this;
-        
+
         initialDiePositions = new Vector3[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -25,6 +23,20 @@ public class DieRoller : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(false);
         }
     }
+    public int[] GetDieRollResults()
+    {
+        return dieRollResults;
+    }
+    
+    private void OnClickGoBack()
+    {
+        print("here");
+        Gameplay.instance.Stop();
+        StartCoroutine(SceneLoader.Instance.LoadYourAsyncScene("GameMenu"));
+        Gameplay.instance.clearLists();
+    }
+
+    
 
     public IEnumerator RollDie()
     {

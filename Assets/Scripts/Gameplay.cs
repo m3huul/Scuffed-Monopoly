@@ -15,8 +15,6 @@ public class Gameplay : MonoBehaviour
 
     [SerializeField] private GameObject playerPrefab;
 
-    [SerializeField] private BalanceTracker[] balanceTrackers;
-
     [SerializeField] private List<string> playerNames;
     [SerializeField] private List<bool> AI;
     [SerializeField] private List<Material> Materials;
@@ -86,6 +84,14 @@ public class Gameplay : MonoBehaviour
         //balanceTracker.gameObject.SetActive(true);
     }
 
+    public void clearLists()
+    {
+        players.Clear();
+        Materials.Clear();
+        AI.Clear();
+        playerNames.Clear();
+    }
+
     public void StartGame()
     {
         StartCoroutine(PlayGame());
@@ -100,7 +106,7 @@ public class Gameplay : MonoBehaviour
             RegisterNewPlayer(playerNames[i], AI[i], Materials[i]);
         }
 
-        yield return CameraController.instance.LerpToViewBoardTarget(2f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
+        yield return CameraController.instance.WaitForCameraRotation(4f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
         
         // Simulate taking turns.  
         for (int i = 0; i < 35; i++)
@@ -212,7 +218,7 @@ public class Gameplay : MonoBehaviour
                             break;
                     }
 
-                    //result = dieRollResults.Sum(); 
+                    result = dieRollResults.Sum();
                     yield return player.MoveSpaces( result );
 
                     if (player.isInJail)
@@ -267,5 +273,15 @@ public class Gameplay : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
+    }
+
+    public void Stop()
+    {
+        StopAllCoroutines();
     }
 }

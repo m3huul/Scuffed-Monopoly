@@ -15,12 +15,12 @@ public class SceneLoader : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }    
+        }
     }
 
     void Start()
     {
-        StartCoroutine(LoadYourAsyncScene("GameMenu"));
+        StartCoroutine(WaitForIntro());
     }
 
     void Update()
@@ -36,5 +36,11 @@ public class SceneLoader : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public IEnumerator WaitForIntro()
+    {
+        yield return new WaitForSeconds(3.5f);
+        StartCoroutine(LoadYourAsyncScene("GameMenu"));
     }
 }

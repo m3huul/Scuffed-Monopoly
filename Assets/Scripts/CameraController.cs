@@ -44,10 +44,26 @@ public class CameraController : MonoBehaviour
 
     public IEnumerator WaitForCameraRotation(float time)
     {
-        for (int i = 0; i < CameraPositions.Length; i++)
+        float startTime = Time.time;
+        Vector3 initialRotation = transform.parent.eulerAngles;
+        Vector3 eularAngle = new(0f, 360f, 0f);
+
+        float Coefficient = 0f;
+        while (Coefficient < 0.98f)
         {
-            yield return new WaitForSeconds(0.1f);
-            yield return LerpToCameraViewTargets(CameraPositions[i].transform.position, CameraPositions[i].transform.rotation.eulerAngles, time);
+            Coefficient = (Time.time - startTime) / time;
+
+            
+            transform.parent.eulerAngles = Vector3.Lerp(initialRotation, eularAngle, Coefficient);
+            yield return null;
         }
+
+        yield return new WaitForSeconds(.2f);
+        StartCoroutine(LerpToViewBoardTarget(2f));
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }
