@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.UIElements;
 
 public class Gameplay : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Gameplay : MonoBehaviour
     [SerializeField] private List<string> playerNames;
     [SerializeField] private List<bool> AI;
     [SerializeField] private List<Material> Materials;
+
+    public List<Player> otherPlayers;
 
     public int result;
  
@@ -156,6 +159,37 @@ public class Gameplay : MonoBehaviour
                             {
                                 Debug.Log(player.name +" rolling");
                             }
+                            else if(chosenAction == TurnActions.UserAction.TRADE)
+                            {
+                                TurnActions.UserAction TradeAction = TurnActions.UserAction.UNDECIDED;
+                                while(TradeAction != TurnActions.UserAction.TRADE)
+                                {
+                                    foreach(Ownable own in player.currentOwnables)
+                                    {
+                                        own.ShowOwnable();
+                                    }
+
+                                    otherPlayers= new();
+                                    int tradingPlayerIndex = players.IndexOf(player);
+                                    for(int j = 0; j < players.Count; j++)
+                                    {
+                                        if(j != tradingPlayerIndex)
+                                        {
+                                            otherPlayers.Add(players[j]);
+                                        }
+                                    }
+                                    yield return TurnActions.instance.GetUserInputTrade(otherPlayers, player);
+                                    TradeAction = TurnActions.instance.GetChosenActionTrade();
+
+                                    if(TradeAction == TurnActions.UserAction.TRADE)
+                                    {
+                                        foreach(Ownable own in player.currentOwnables)
+                                        {
+                                            own.reset();
+                                        }
+                                    }                                    
+                                }
+                            }
                             else if(chosenAction == TurnActions.UserAction.MORTGAGE)
                             {
                                 TurnActions.UserAction action = TurnActions.UserAction.UNDECIDED;
@@ -218,7 +252,7 @@ public class Gameplay : MonoBehaviour
                             break;
                     }
 
-                    result = dieRollResults.Sum();
+                    //result = dieRollResults.Sum();
                     yield return player.MoveSpaces( result );
 
                     if (player.isInJail)

@@ -106,6 +106,12 @@ public abstract class Ownable : BoardLocation
         }
     }
 
+    public void ShowOwnable()
+    {
+        transform.position = new Vector3(position.x, position.y + .2f, position.z);
+        transform.localScale = new Vector3(size.x + .2f, size.y + .2f, size.z + .2f);
+    }
+
     public void reset()
     {
         transform.position = position;

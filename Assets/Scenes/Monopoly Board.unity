@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1812216, g: 0.22681984, b: 0.30734167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44524103, g: 0.49453926, b: 0.57283634, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -763,7 +763,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &90770033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2048,7 +2048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247935281}
   - component: {fileID: 247935280}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DiceFloorCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3382,7 +3382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444944618}
   - component: {fileID: 444944617}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DiceFloorCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5917,7 +5917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &846873553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6581,7 +6581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 887382781}
   - component: {fileID: 887382780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DiceFloorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6840,7 +6840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963403263}
   - component: {fileID: 963403262}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DiceFloorCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7153,6 +7153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667a0aed366b84deca9dff954f238238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TradeOwnable: {fileID: 0}
   rollText: {fileID: 1171826522}
 --- !u!1 &1017308850
 GameObject:
@@ -12620,7 +12621,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794975726}
   - component: {fileID: 1794975725}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DiceFloorCollider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14290,9 +14291,9 @@ RectTransform:
   m_Father: {fileID: 1989791560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 952, y: 539}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -8, y: -1}
   m_SizeDelta: {x: 462, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129818248
