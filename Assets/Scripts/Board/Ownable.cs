@@ -34,7 +34,10 @@ public abstract class Ownable : BoardLocation
         {
             if (!player.IsAI())
             {
-                yield return LerpCameraViewToThisLocation();
+                if (Gameplay.instance.CameraAnim)
+                {
+                    yield return LerpCameraViewToThisLocation();
+                }
                 yield return OwnablePurchaseDialog.instance.OfferPurchase(this);
 
                 if (OwnablePurchaseDialog.instance.resultingDecision)
@@ -51,8 +54,10 @@ public abstract class Ownable : BoardLocation
                 {
                     //TODO Auction logic here.
                 }
-
-                yield return LerpCameraViewBackToMainBoardView();
+                if (Gameplay.instance.CameraAnim)
+                {
+                    yield return LerpCameraViewBackToMainBoardView();
+                }
             }
             else
             {

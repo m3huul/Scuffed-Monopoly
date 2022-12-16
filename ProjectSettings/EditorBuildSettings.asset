@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/IntroScene.unity
-    guid: 9cf0acdc4c7c4b34aa4104db64988d76
-  - enabled: 1
     path: Assets/Scenes/GameMenu.unity
     guid: 821c8889624651047bf69dd652df95f6
   - enabled: 1
     path: Assets/Scenes/Monopoly Board.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 9cf0acdc4c7c4b34aa4104db64988d76
   m_configObjects: {}

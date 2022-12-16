@@ -36,18 +36,10 @@ GraphicsSettings:
   - {fileID: 15106, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 4800000, guid: 4fe4ddd5c6a3dd24d8a818bd811cbfc7, type: 3}
-  - {fileID: 4800000, guid: 35d39d65b50f0754bbe6153e154ea627, type: 3}
-  - {fileID: 4800000, guid: 768dbf386ea767546887af7efc7d48bf, type: 3}
-  - {fileID: 4800000, guid: e01070acf5be83547a01979058a32084, type: 3}
-  - {fileID: -6465566751694194690, guid: 2ef995114727f674289c402080c309d6, type: 3}
-  - {fileID: -6465566751694194690, guid: 2a893ba20727f774dbed6af1a3c283a8, type: 3}
-  - {fileID: -6465566751694194690, guid: 104faf60e00c02547b10390f4e788b06, type: 3}
-  - {fileID: -6465566751694194690, guid: c2dd1bfeebdb1174fb829f8e694288dd, type: 3}
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_CustomRenderPipeline: {fileID: 11400000, guid: a78c7e95847e27c4e973c034d77e2e2d, type: 2}
+  m_CustomRenderPipeline: {fileID: 0}
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
   m_DefaultRenderingPath: 1
@@ -71,4 +63,4 @@ GraphicsSettings:
   m_DefaultRenderingLayerMask: 1
   m_LogWhenShaderIsCompiled: 0
   m_SRPDefaultSettings:
-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 96c9e2a5f62e97c46bcd5ebbccea0f30, type: 2}
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: 14f38d9db5f679a47be9eb17bd15d852, type: 2}

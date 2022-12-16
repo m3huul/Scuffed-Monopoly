@@ -5,7 +5,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.XR;
 using UnityEngine;
-using UnityEngine.Purchasing;
 using UnityEngine.UIElements;
 
 public class Gameplay : MonoBehaviour
@@ -21,8 +20,13 @@ public class Gameplay : MonoBehaviour
     [SerializeField] private List<Material> Materials;
 
     public List<Player> otherPlayers;
-
+    public bool CameraAnim;
     public int result;
+
+    public void debug()
+    {
+        print("debug");
+    }
  
     void Awake()
     {
@@ -109,8 +113,11 @@ public class Gameplay : MonoBehaviour
             RegisterNewPlayer(playerNames[i], AI[i], Materials[i]);
         }
 
-        yield return CameraController.instance.WaitForCameraRotation(4f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
-        
+        if (CameraAnim)
+        {
+            yield return CameraController.instance.WaitForCameraRotation(4f); //Starts the game with the camera lerping to its main position. I takes 5 seconds to do this effect.
+        }
+
         // Simulate taking turns.  
         for (int i = 0; i < 35; i++)
         {
@@ -252,7 +259,7 @@ public class Gameplay : MonoBehaviour
                             break;
                     }
 
-                    //result = dieRollResults.Sum();
+                    result = dieRollResults.Sum();
                     yield return player.MoveSpaces( result );
 
                     if (player.isInJail)

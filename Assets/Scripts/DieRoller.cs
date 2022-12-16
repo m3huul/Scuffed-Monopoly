@@ -28,7 +28,7 @@ public class DieRoller : MonoBehaviour
         return dieRollResults;
     }
     
-    private void OnClickGoBack()
+    public void OnClickGoBack()
     {
         print("here");
         Gameplay.instance.Stop();

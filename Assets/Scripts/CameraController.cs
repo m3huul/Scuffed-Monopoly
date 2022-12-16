@@ -8,7 +8,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private GameObject gameViewTarget;
     [SerializeField] private GameObject[] CameraPositions;
-    [SerializeField] private float time; 
+    [SerializeField] private float time;
+
 
     void Awake()
     {
