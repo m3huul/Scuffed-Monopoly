@@ -15,7 +15,6 @@ public class CommunityChest : BoardLocation
     {
         yield return new WaitForSeconds(1f);
         int i = UnityEngine.Random.Range(0, 8);
-        i = 4;  //print(i);   
         switch (i)
         {
             case 0: //ADVANCE TO GO

@@ -71,6 +71,9 @@ public abstract class Ownable : BoardLocation
                     player.currentOwnables.Add(this);
                     owner = player;
                     print(result);
+
+                    OwnerColorIndicator.material = player.playerColor;
+                    OwnerColorIndicator.gameObject.SetActive(true);
                 }
                 else if(result == "skip")
                 {

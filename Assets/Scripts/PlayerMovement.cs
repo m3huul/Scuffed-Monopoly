@@ -10,11 +10,11 @@ using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public List<Inventory> myInventory = new();
+    public List<Inventory> myInventory = new List<Inventory>();
 
 
     public Animator PlayMovementAnim;
-    [SerializeField] public List<Transform> Posi = new();
+    [SerializeField] public List<Transform> Posi = new List<Transform>();
     //public bool moveAllowed;
     public float speed;
     public float duration;

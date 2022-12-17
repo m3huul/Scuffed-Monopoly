@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class AI : MonoBehaviour
 {
-    public List<string> colorSet= new();
+    public List<string> colorSet= new List<string>();
     public RestAPI restAPI;
     private void Start()
     {

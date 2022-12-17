@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
     {
         float startTime = Time.time;
         Vector3 initialRotation = transform.parent.eulerAngles;
-        Vector3 eularAngle = new(0f, 360f, 0f);
+        Vector3 eularAngle = new Vector3(0f, 360f, 0f);
 
         float Coefficient = 0f;
         while (Coefficient < 0.98f)

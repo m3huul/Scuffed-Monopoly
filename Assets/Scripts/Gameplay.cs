@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using UnityEditor.XR;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -176,7 +175,7 @@ public class Gameplay : MonoBehaviour
                                         own.ShowOwnable();
                                     }
 
-                                    otherPlayers= new();
+                                    otherPlayers= new List<Player>();
                                     int tradingPlayerIndex = players.IndexOf(player);
                                     for(int j = 0; j < players.Count; j++)
                                     {

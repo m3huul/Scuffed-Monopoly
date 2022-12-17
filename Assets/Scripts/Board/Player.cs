@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     {
         if (balance < 0 && accountBalance - balance < 0)
         {
-            List<int> mortgageValues = new();
+            List<int> mortgageValues = new List<int>();
             foreach (Ownable ownable in currentOwnables)
             {
                 mortgageValues.Add(ownable.mortgageValue);
